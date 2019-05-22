@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"os"
 	"runtime"
 
@@ -23,7 +22,6 @@ func GetPuppetYaml() (*PuppetInfo, error) {
 
 	yamlFile, err := os.Open(YamlPath())
 	if err != nil {
-		fmt.Println(err)
 		return &yamlData, err
 	}
 	defer yamlFile.Close()

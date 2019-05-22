@@ -2,7 +2,6 @@ package main
 
 import (
 	"context"
-	"fmt"
 
 	"github.com/kolide/osquery-go/plugin/table"
 )
@@ -59,7 +58,7 @@ func PuppetInfoGenerate(ctx context.Context, queryContext table.QueryContext) ([
 	// fmt.Println("Generating info...")
 	runData, err := GetPuppetYaml()
 	if err != nil {
-		fmt.Println(err)
+		// fmt.Println(err)
 		return results, err
 	}
 
