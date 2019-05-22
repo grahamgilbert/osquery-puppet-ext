@@ -40,19 +40,19 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:9a9f34bd97755aff6190207edf4603692990594308ec9814892518a06eba9bf0"
+  digest = "1:20fedb06f9be7a6ab010b567f7d4210d83667a4eae058b16fa5fad6a1caa6831"
   name = "golang.org/x/sys"
   packages = ["windows"]
   pruneopts = "UT"
-  revision = "c432e742b0af385916e013f6a34e9e73d139cf82"
+  revision = "8097e1b27ff5e40620836729a9584e91b094b062"
 
 [[projects]]
-  digest = "1:4d2e5a73dc1500038e504a8d78b986630e3626dc027bc030ba5c75da257cdb96"
-  name = "gopkg.in/yaml.v2"
+  branch = "v3"
+  digest = "1:e11e6a71536a7120d56ea0c0cbfb4cf2b24b328f3982e8d03ce6939f7fe8b14c"
+  name = "gopkg.in/yaml.v3"
   packages = ["."]
   pruneopts = "UT"
-  revision = "51d6538a90f86fe93ac480b35f37b2be17fef232"
-  version = "v2.2.2"
+  revision = "55513cacd4ae8b250e3a9084ab9d8c407b1ed618"
 
 [solve-meta]
   analyzer-name = "dep"
@@ -60,7 +60,7 @@
   input-imports = [
     "github.com/kolide/osquery-go",
     "github.com/kolide/osquery-go/plugin/table",
-    "gopkg.in/yaml.v2",
+    "gopkg.in/yaml.v3",
   ]
   solver-name = "gps-cdcl"
   solver-version = 1

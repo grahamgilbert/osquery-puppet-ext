@@ -7,13 +7,13 @@ import (
 )
 
 type Log struct {
-	Level   string   `yaml:"level"`
-	Message string   `yaml:"message"`
-	Source  string   `yaml:"source"`
-	Tags    []string `yaml:"tags"`
-	Time    string   `yaml:"time"`
-	File    string   `yaml:"file"`
-	Line    string   `yaml:"line"`
+	Level   string `yaml:"level"`
+	Message string `yaml:"message"`
+	Source  string `yaml:"source"`
+	// Tags    []string `yaml:"tags"`
+	Time string `yaml:"time"`
+	File string `yaml:"file"`
+	Line string `yaml:"line"`
 }
 
 // Columns returns the type hinted columns for the logged in user.

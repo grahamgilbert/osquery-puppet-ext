@@ -5,7 +5,8 @@ import (
 	"os"
 	"runtime"
 
-	"gopkg.in/yaml.v2"
+	"gopkg.in/yaml.v3"
+	// "github.com/ghodss/yaml"
 )
 
 func YamlPath() string {
@@ -17,7 +18,9 @@ func YamlPath() string {
 }
 
 func GetPuppetYaml() (*PuppetInfo, error) {
+
 	var yamlData PuppetInfo
+
 	yamlFile, err := os.Open(YamlPath())
 	if err != nil {
 		fmt.Println(err)
@@ -27,6 +30,5 @@ func GetPuppetYaml() (*PuppetInfo, error) {
 	if err := yaml.NewDecoder(yamlFile).Decode(&yamlData); err != nil {
 		return &yamlData, err
 	}
-
 	return &yamlData, nil
 }

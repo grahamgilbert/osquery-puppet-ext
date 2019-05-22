@@ -30,8 +30,8 @@
   name = "github.com/kolide/osquery-go"
 
 [[constraint]]
-  name = "gopkg.in/yaml.v2"
-  version = "2.2.2"
+  branch = "v3"
+  name = "gopkg.in/yaml.v3"
 
 [prune]
   go-tests = true

@@ -2,28 +2,29 @@ package main
 
 import (
 	"context"
+	"fmt"
 
 	"github.com/kolide/osquery-go/plugin/table"
 )
 
 type ResourceStatus struct {
-	Title            string        `yaml:"title"`
-	File             string        `yaml:"file"`
-	Line             string        `yaml:"line"`
-	Resource         string        `yaml:"resource"`
-	ResourceType     string        `yaml:"resource_type"`
-	ContainmentPath  []string      `yaml:"containment_path"`
-	EvaulationTime   string        `yaml:"evaluation_time"`
-	Tags             []string      `yaml:"tags"`
-	Time             string        `yaml:"time"`
-	Failed           string        `yaml:"failed"`
-	Changed          string        `yaml:"changed"`
-	OutOfSync        string        `yaml:"out_of_sync"`
-	Skipped          string        `yaml:"skipped"`
-	ChangeCount      string        `yaml:"change_count"`
-	OutOfSyncCount   string        `yaml:"out_of_sync_count"`
-	Events           []interface{} `yaml:"events"`
-	CorrectiveChange string        `yaml:"corrective_change"`
+	Title        string `yaml:"title"`
+	File         string `yaml:"file"`
+	Line         string `yaml:"line"`
+	Resource     string `yaml:"resource"`
+	ResourceType string `yaml:"resource_type"`
+	// ContainmentPath []string `yaml:"containment_path"`
+	EvaulationTime string `yaml:"evaluation_time"`
+	// Tags             interface{}   `yaml:"tags"`
+	// Time           string `yaml:"time"`
+	Failed         string `yaml:"failed"`
+	Changed        string `yaml:"changed"`
+	OutOfSync      string `yaml:"out_of_sync"`
+	Skipped        string `yaml:"skipped"`
+	ChangeCount    string `yaml:"change_count"`
+	OutOfSyncCount string `yaml:"out_of_sync_count"`
+	// Events           []interface{} `yaml:"events"`
+	CorrectiveChange string `yaml:"corrective_change"`
 }
 
 // Columns returns the type hinted columns for the logged in user.
@@ -37,7 +38,7 @@ func PuppetStateColumns() []table.ColumnDefinition {
 		// table.TextColumn("containment_path"),
 		table.TextColumn("evaluation_time"),
 		// table.TextColumn("tags"),
-		table.TextColumn("time"),
+		// table.TextColumn("time"),
 		table.TextColumn("failed"),
 		table.TextColumn("changed"),
 		table.TextColumn("out_of_sync"),
@@ -51,8 +52,11 @@ func PuppetStateColumns() []table.ColumnDefinition {
 
 func PuppetStateGenerate(ctx context.Context, queryContext table.QueryContext) ([]map[string]string, error) {
 	var results []map[string]string
+	// fmt.Println("Generating info...")
 	runData, err := GetPuppetYaml()
+	fmt.Printf("%s", runData)
 	if err != nil {
+		fmt.Print(err)
 		return results, err
 	}
 
@@ -66,7 +70,7 @@ func PuppetStateGenerate(ctx context.Context, queryContext table.QueryContext) (
 			// "containment_path":    parseList(item.ContainmentPath),
 			"evaluation_time": item.EvaulationTime,
 			// "tags": item.Tags,
-			"time":              item.Time,
+			// "time":              item.Time,
 			"failed":            item.Failed,
 			"changed":           item.Changed,
 			"out_of_sync":       item.OutOfSync,
