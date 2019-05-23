@@ -19,7 +19,7 @@ func main() {
 	flag.Parse()
 
 	// allow for osqueryd to create the socket path otherwise it will error
-	time.Sleep(3 * time.Second)
+	time.Sleep(2 * time.Second)
 
 	server, err := osquery.NewExtensionManagerServer(
 		"puppet_state",
@@ -38,10 +38,6 @@ func main() {
 		table.NewPlugin("puppet_logs", PuppetLogsColumns(), PuppetLogsGenerate),
 		table.NewPlugin("puppet_state", PuppetStateColumns(), PuppetStateGenerate),
 	}
-
-	// plugins := []osquery.OsqueryPlugin{
-
-	// }
 
 	for _, p := range plugins {
 		server.RegisterPlugin(p)

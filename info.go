@@ -27,6 +27,7 @@ type PuppetInfo struct {
 	TransactionUUID      string `yaml:"transaction_uuid"`
 	Logs                 []Log
 	ResourceStatuses     map[string]ResourceStatus `yaml:"resource_statuses"`
+	// Metrics          interface{}               `yaml:"metrics"`
 }
 
 func PuppetInfoColumns() []table.ColumnDefinition {
@@ -55,9 +56,9 @@ func PuppetInfoColumns() []table.ColumnDefinition {
 // plugins is flat it will return a single row.
 func PuppetInfoGenerate(ctx context.Context, queryContext table.QueryContext) ([]map[string]string, error) {
 	var results []map[string]string
-	// fmt.Println("Generating info...")
 	runData, err := GetPuppetYaml()
 	if err != nil {
+		// fmt.Print(runData)
 		// fmt.Println(err)
 		return results, err
 	}
@@ -80,7 +81,7 @@ func PuppetInfoGenerate(ctx context.Context, queryContext table.QueryContext) ([
 		"status":                runData.Status,
 		"time":                  runData.Time,
 		"transaction_completed": runData.TransactionCompleted,
-		"transaction_uuid":      runData.TransactionCompleted,
+		"transaction_uuid":      runData.TransactionUUID,
 	})
 
 	return results, nil
