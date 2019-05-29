@@ -2,7 +2,6 @@ package main
 
 import (
 	"bytes"
-	"fmt"
 	"os"
 	"runtime"
 	"strings"
@@ -28,7 +27,7 @@ func GetPuppetYaml() (*PuppetInfo, error) {
 	yamlFile, err := os.Open(YamlPath())
 
 	if err != nil {
-		fmt.Print(err)
+		// fmt.Print(err)
 		return &yamlData, err
 	}
 
@@ -39,8 +38,8 @@ func GetPuppetYaml() (*PuppetInfo, error) {
 
 	err = yaml.Unmarshal([]byte(yamlString), &yamlData)
 	if err != nil {
-		fmt.Print("Error during unmarshal")
-		fmt.Print(err)
+		// fmt.Print("Error during unmarshal")
+		// fmt.Print(err)
 		return &yamlData, err
 	}
 
